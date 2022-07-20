@@ -1,5 +1,5 @@
 /* Database schema to keep the structure of entire database. */
-CREATE DATABASE vet_clinic;
+CREATE DATABASE vet_clinic_db;
 
 CREATE TABLE animal (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
