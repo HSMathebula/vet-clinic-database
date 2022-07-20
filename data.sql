@@ -11,7 +11,6 @@ VALUES('Pikachu', date '2021-1-7', 1, 'false', 15.04);
 
 INSERT INTO animal (name, date_of_birth, escape_attempts, neutered, weight_kg)
 VALUES('Devimon', date '2017-05-12', 5, 'true', 11);
-<<<<<<< HEAD
 
 INSERT INTO  animal(name,date_of_birth,escape_attempts, neutered , weight_kg)
 VALUES('Charmander', 'Feb 08 2020',0, false, 11),
@@ -21,5 +20,3 @@ VALUES('Charmander', 'Feb 08 2020',0, false, 11),
 ('Boarmon', 'Jun 07 2005',7, true, 20.4),
 ('Blossom', 'Oct 13 1998',3, true, 17),
 ('Ditto', 'May 14 2022',4, true, 22);
-=======
->>>>>>> 4148d627ff8ac0f0d111ffc917b03c0f7fedb907
