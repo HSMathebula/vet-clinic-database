@@ -36,6 +36,15 @@ CREATE TABLE specializations(
   CONSTRAINT fk_vets FOREIGN KEY(vets_id) REFERENCES vets(id)
 );
 
+CREATE TABLE visits(
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  animals_id INT,
+  vets_id INT,
+  date_of_visit DATE,
+  CONSTRAINT fk_visit_animals FOREIGN KEY(animals_id) REFERENCES animals(id),
+  CONSTRAINT fk_visits_vet FOREIGN KEY(vets_id) REFERENCES vets(id)
+);
+
 ALTER TABLE animal ADD COLUMN species VARCHAR(200);
 
 ALTER TABLE animal DROP id;
