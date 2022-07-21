@@ -27,3 +27,14 @@ ALTER TABLE animal DROP id;
 ALTER TABLE animal ADD id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY;
 
 ALTER TABLE animal DROP COLUMN species;
+
+-- ADD COLUMN SPECIES
+ALTER TABLE animal ADD species_id INT;
+
+-- ADD COLUMN OWNER_ID
+ ALTER TABLE animal ADD owner_id INT;
+
+-- set constraint for primary key species_id
+ ALTER TABLE animal ADD CONSTRAINT fk_species_table FOREIGN KEY(species_id) REFERENCES species(id);
+ -- set constraint for primary key owners-id
+ALTER TABLE animal ADD CONSTRAINT fk_owner_table FOREIGN KEY(owner_id) REFERENCES owners(id);
