@@ -46,78 +46,40 @@ UPDATE animal SET owner_id = 4 WHERE name = 'Charmander' OR name = 'Squirtle' OR
 UPDATE animal SET owner_id = 5 WHERE name = 'Angemon' OR name = 'Boarmon';
 
 -- insert data into vets table
-INSERT INTO vets (name, age, date_of_graduation)
-VALUES ('Vet William Tatcher', 45, 'Apr 23 2000'),
-('Vet Maisy Smith', 26 ,'Jan 17 2019'),
-('Vet Stephanie Mendez', 64, 'May 04 1981'),
-('Vet Jack Harkness', 38,'Jun 08 2008');
+INSERT INTO vets(name, age, date_of_graduation)
+VALUES 
+    ('William Tatcher', 45, '2000-04-23'),
+    ('Maisy Smith', 26, '2019-01-17'),
+    ('Stephanie Mendez', 64, '1981-05-04'),
+    ('Jack Harkness', 38, '2008-06-08');
 
 -- insert data into specializations
-INSERT INTO specializations(species_id, vets_id)
-VALUES ((SELECT id FROM species WHERE name = 'Pokemon'), (SELECT id FROM vets WHERE name = 'William Tatcher')),
-
-((SELECT id FROM species WHERE name = 'Digimon' OR name = 'Pokemon'), (SELECT id FROM vets WHERE name = 'Vet Stephanie Mendez')),
-
-((SELECT id FROM species WHERE name = 'Digimon'), (SELECT id FROM vets WHERE name = 'Vet Jack Harkness'));
+INSERT INTO specializations(vet_id, species_id)
+VALUES 
+    (1, 1),
+    (3, 2),
+    (3, 1),
+    (4, 2);
 
 -- insert data into visit table 
-INSERT INTO visits(animal_id, vets_id, date_of_visit)
-VALUES((SELECT id FROM animal WHERE name = 'Agumon'),
-       (SELECT id FROM vets WHERE name = 'William Tatcher'), '2020-06-24'),
-
-((SELECT id FROM animal WHERE name = 'Agumon'),
- (SELECT id FROM vets WHERE name = 'Stephanie Mendez'), '2020-07-22'),
-
-((SELECT id FROM animal WHERE name = 'Pikachu'),
- (SELECT id FROM vets WHERE name = 'Maisy Smith'), '2020-01-05'),
-
-((SELECT id FROM animal WHERE name = 'Gabumon'),
- (SELECT id FROM vets WHERE name = 'Jack Harkness'), '2021-02-02'),
-
-((SELECT id FROM animal WHERE name = 'Pikachu'),
- (SELECT id FROM vets WHERE name = 'Maisy Smith'), '2020-03-08'),
-
-((SELECT id FROM animal WHERE name = 'Pikachu'),
- (SELECT id FROM vets WHERE name = 'Maisy Smith'), '2020-06-14'),
-
-((SELECT id FROM animal WHERE name = 'Devimon'),
- (SELECT id FROM vets WHERE name = 'Stephanie Mendez'), '2021-06-04'),
-
-((SELECT id FROM animal WHERE name = 'Charmander'),
- (SELECT id FROM vets WHERE name = 'Jack Harkness'),'2021-02-24'),
-
-((SELECT id FROM animal WHERE name = 'Plantmon'),
- (SELECT id FROM vets WHERE name = 'Maisy Smith'), '2019-12-21'),
-
-((SELECT id FROM animal WHERE name = 'Plantmon'),
- (SELECT id FROM vets WHERE name = 'William Tatcher'), '2020-09-10'),
-
-((SELECT id FROM animal WHERE name = 'Plantmon'),
- (SELECT id FROM vets WHERE name = 'Maisy Smith'), '2021-04-17'),
-
-((SELECT id FROM animal WHERE name = 'Squirtle'),
- (SELECT id FROM vets WHERE name = 'Stephanie Mendez'), '2019-09-29'),
-
-((SELECT id FROM animal WHERE name = 'Angemon'),
- (SELECT id FROM vets WHERE name = 'Jack Harkness'), '2020-10-03'),
-
-((SELECT id FROM animal WHERE name = 'Angemon'),
- (SELECT id FROM vets WHERE name = 'Jack Harkness'), '2020-11-04'),
-
-((SELECT id FROM animal WHERE name = 'Boarmon'),
- (SELECT id FROM vets WHERE name = 'Maisy Smith'), '2019-01-24'),
-
-((SELECT id FROM animal WHERE name = 'Boarmon'),
- (SELECT id FROM vets WHERE name = 'Maisy Smith'), '2019-06-15'),
-
-((SELECT id FROM animal WHERE name = 'Boarmon'),
- (SELECT id FROM vets WHERE name = 'Maisy Smith'), '2020-02-27'),
-
-((SELECT id FROM animal WHERE name = 'Boarmon'),
- (SELECT id FROM vets WHERE name = 'Maisy Smith'), '2020-09-03'),
-  
-((SELECT id FROM animal WHERE name = 'Blossom'),
- (SELECT id FROM vets WHERE name = 'Stephanie Mendez'), '2020-06-24'),
-
-((SELECT id FROM animal WHERE name = 'Blossom'),
- (SELECT id FROM vets WHERE name = 'William Tatcher'), '2021-01-11'); 
+INSERT INTO visits(vet_id, animal_id, date_visited) VALUES 
+(1, 1, '2020-05-24'),
+(3, 1, '2020-07-22'),
+(4, 2, '2021-02-02'),
+(2, 3, '2020-01-05'),
+(2, 3, '2020-03-08'),
+(2, 3, '2020-05-14'),
+(3, 4, '2021-05-04'),
+(4, 5, '2021-02-24'),
+(2, 6, '2019-12-21'),
+(1, 6, '2020-08-10'),
+(2, 6, '2021-04-07'),
+(3, 7, '2019-09-29'),
+(4, 8, '2020-10-03'),
+(4, 8, '2020-11-04'),
+(2, 9, '2019-01-24'),
+(2, 9, '2019-05-15'),
+(2, 9, '2020-02-27'),
+(2, 9, '2020-08-03'),
+(3, 10, '2020-05-24'),
+(1, 10, '2021-01-11');
