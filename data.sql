@@ -37,3 +37,10 @@ INSERT INTO  species(name) VALUES('Pokemon'), ('Digimon');
 UPDATE animal SET species_id = (SELECT id FROM species WHERE name = 'Digimon') WHERE name LIKE '%mon';
 
 UPDATE animal SET species_id = (SELECT id FROM species WHERE name = 'Pokemon') WHERE name NOT LIKE '%mon';
+
+-- Modify your inserted animals to include owner information (owner_id)
+UPDATE animal SET owner_id = 1 WHERE name = 'Agumon';
+UPDATE animal SET owner_id = 2 WHERE name = 'Gabumon' OR name = 'Pikachu';
+UPDATE animal SET owner_id = 3 WHERE name = 'Devimon' OR name = 'Plantmon';
+UPDATE animal SET owner_id = 4 WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom';
+UPDATE animal SET owner_id = 5 WHERE name = 'Angemon' OR name = 'Boarmon';
