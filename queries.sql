@@ -58,3 +58,18 @@ SELECT species, MAX(weight_kg), MIN(weight_kg) FROM animal GROUP BY species;
 
 /*What is the average number of escape attempts per animal type of those born between 1990 and 2000*/
 SELECT species, AVG(escape_attempts) FROM animal WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
+
+/*JOINS*/
+SELECT name, full_name FROM animal JOIN OWNERS ON animal.owner_id = OWNERS.id WHERE full_name = 'Melody Pond';
+
+SELECT animal.name as Name, SPECIES.name as Type FROM animal JOIN SPECIES ON SPECIES.id = species_id WHERE SPECIES.id = 1;
+
+SELECT name AS animal, full_name AS Owners FROM animal RIGHT JOIN OWNERS ON animal.owner_id = OWNERS.id;
+
+SELECT COUNT(animal.name) AS animal_count, SPECIES.name AS Specie FROM animal JOIN SPECIES ON animal.species_id = SPECIES.id GROUP BY SPECIES.name;
+
+SELECT OWNERS.full_name, animal.name AS name_of_animal, SPECIES.name AS name_of_species FROM animal JOIN OWNERS ON OWNERS.id = animal.owner_id JOIN SPECIES ON SPECIES.id = animal.species_id WHERE OWNERS.full_name = 'Jennifer Orwell' AND SPECIES.name = 'Digimon';
+
+SELECT name, escape_attempts, full_name FROM animal JOIN OWNERS ON OWNERS.id = animal.owner_id WHERE OWNERS.full_name = 'Dean Winchester' AND animal.escape_attempts = 0;
+
+SELECT full_name, COUNT(animal.owner_id) AS Owns FROM OWNERS JOIN animal ON animal.owner_id = OWNERS.id GROUP BY full_name ORDER BY Owns DESC;
