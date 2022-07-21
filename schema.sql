@@ -28,6 +28,14 @@ CREATE TABLE vets(
   date_of_graduation DATE
 );
 
+CREATE TABLE specializations(
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  species_id INT,
+  vets_id INT,
+  CONSTRAINT fk_species FOREIGN KEY(species_id) REFERENCES species(id),
+  CONSTRAINT fk_vets FOREIGN KEY(vets_id) REFERENCES vets(id)
+);
+
 ALTER TABLE animal ADD COLUMN species VARCHAR(200);
 
 ALTER TABLE animal DROP id;
